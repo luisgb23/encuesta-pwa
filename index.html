@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Encuesta Itapebí</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+  <!-- Vinculación a tu archivo de estilos local -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- PANTALLA PRINCIPAL: ENCUESTA -->
+  <div id="seccion-encuesta">
+    <h1 class="titulo">En Itapebí queremos saber tu opinión</h1>
+    <h3 class="subtitulo">¿Cómo calificarías nuestro servicio hoy?</h3>
+    <!-- REPARADO: Se reincorporan los botones de votación que faltaban -->
+    <div class="grid-caritas">
+      <div class="tarjeta-carita malo" onclick="votar('Malo')">
+        <span class="emoji">😡</span>
+        <span class="texto-carita">Malo</span>
+      </div>
+      <div class="tarjeta-carita regular" onclick="votar('Regular')">
+        <span class="emoji">😐</span>
+        <span class="texto-carita">Regular</span>
+      </div>
+      <div class="tarjeta-carita bueno" onclick="votar('Bueno')">
+        <span class="emoji">😊</span>
+        <span class="texto-carita">Bueno</span>
+      </div>
+      <div class="tarjeta-carita excelente" onclick="votar('Excelente')">
+        <span class="emoji">🤩</span>
+        <span class="texto-carita">Excelente</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA SECUNDARIA: AGRADECIMIENTO -->
+  <div id="seccion-gracias" class="pantalla-gracias">
+    <h2>¡Muchas Gracias! ❤️</h2>
+    <p style="font-size: 1.5rem; color: #718096; margin-top: 10px;">Tu opinión nos ayuda a mejorar constantemente.</p>
+  </div>
+
+  <!-- Botón discreto de acceso al Dashboard -->
+  <button class="btn-acceso-admin" onclick="solicitarAcceso()">⚙️ Dashboard</button>
+
+  <!-- PANTALLA COMPLETA DEL DASHBOARD -->
+  <div id="dashboard" class="dashboard-container">
+    <div class="dashboard-header">
+      <h2>📊 Dashboard de Satisfacción (Mes Actual)</h2>
+      <button class="btn-secundario" onclick="cerrarDashboard()">Volver a la Encuesta</button>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Sección Gráfica -->
+      <div class="chart-box">
+        <canvas id="graficaVotos"></canvas>
+      </div>
+
+      <!-- Sección Resumen Numérico -->
+      <div class="metrics-box">
+        <h3>Resumen Numérico</h3>
+        <div id="lista-metricas" style="margin: 20px 0;">
+          <!-- Datos dinámicos desde JS -->
+        </div>
+        <button class="btn-primario" style="width: 100%;" onclick="exportarCSV()">📥 Descargar Reporte CSV</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carga ordenada de tus archivos JavaScript locales -->
+  <script src="js/chart.js"></script>
+  <script src="js/dexie.js"></script>
+  <script src="js/scripts.js"></script>
+   <!-- REGISTRO DEL SERVICE WORKER PARA EL MODO OFFLINE -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registrado correctamente.', reg))
+          .catch(err => console.error('Error al registrar el Service Worker', err));
+      });
+    }
+  </script>
+</body>
+</html>

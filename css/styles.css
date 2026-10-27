@@ -7,19 +7,7 @@
   padding: 0;
   user-select: none; /* Evita que el cliente seleccione texto al tocar rápido */
 }
-/*
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background-color: #F4F7FC;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  overflow: hidden;
-}
-*/
+
 body {
   font-family: system-ui, -apple-system, sans-serif;
   background-color: #F4F7FC;
@@ -37,7 +25,7 @@ body {
 .titulo {
   font-size: 2.5rem;
   color: #2D3748;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   text-align: center;
   font-weight: 700;
 }
@@ -45,7 +33,7 @@ body {
 .subtitulo {
   font-size: 2rem;
   color: #2D3748;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   text-align: center;
   font-weight: 700;
 }
